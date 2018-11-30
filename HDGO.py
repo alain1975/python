@@ -15,8 +15,18 @@ def list_goods(goods_dict):
     for key in sorted_goods_dict.keys():
         print(key,"       ", sorted_goods_dict[key]["name"],"      ",sorted_goods_dict[key]["price"])
 
-def add_cart():
+def add_cart(key,amount):
+
     pass
+
+
+def list_cart(cart_list)
+    print("-----------------欢迎您来到订单结算页面-----------")
+    print("您当前的购物车商品信息为:")
+    print("商品名称：{}          商品单价：{}              数量：{}              商品总价：{}".format(name,unitprice,unit,totalprice))
+
+
+
 
 def main():
     goods_dict = {
@@ -31,12 +41,22 @@ def main():
     }
     list_goods(goods_dict)
     key_input = input("请根据商品列表信息输入商品编号，退出购物请输入q：")
-    if key_input == 'q':
-        quit()
-    elif key_input in goods_dict.keys():
-        amount = input ("请输入您要购买的数量：")
-        pass
-    else
+    while key_input != 'q':
+        if key_input in goods_dict.keys():
+            amount = input ("请输入您要购买的数量：")
+
+            while amount.isdigit() == False or int(amount) < 0:
+                amount = input("请输入您要购买的数量：")
+            if int(amount) > 0:
+                add_cart(key_input,int(amount))
+            list_goods(goods_dict)
+            key_input = input("请根据商品列表信息输入商品编号，退出购物请输入q：")
+        else:
+            print("商品编号不存在，请重新输入！")
+            list_goods(goods_dict)
+            key_input = input("请根据商品列表信息输入商品编号，退出购物请输入q：")
+
+    list_cart()
 
 
 if __name__ == '__main__':
